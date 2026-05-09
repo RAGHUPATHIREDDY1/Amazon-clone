@@ -1,9 +1,9 @@
 import { BrowserRouter,  Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import NotFound from './components/NotFound'
-import Login from './components/Login'
-import Popular from './components/Popular'
-import Search from './components/Search'
+import Login from './components/login'
+import Popular from './components/popular'
+import Search from './components/search'
 import MovieItemDetails from './components/MovieItemdetails'
 import './App.css'
 const APP = () => {

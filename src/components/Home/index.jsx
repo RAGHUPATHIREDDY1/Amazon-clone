@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Cookies from 'js-cookie'
 import { Navigate, useNavigate } from 'react-router-dom'
 import Header from "../header"
-import SearchBar from "../Search"
+import SearchBar from "../search"
 import './index.css'
 
 const Home = () => {
