@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Cookies from 'js-cookie'
-import Header from '../header'
+import Header from '../Header'
 import './index.css'
 
 const MovieItemDetails = () => {

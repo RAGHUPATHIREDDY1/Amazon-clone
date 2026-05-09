@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import Cookies from 'js-cookie'
 import { Navigate, useNavigate } from 'react-router-dom'
-import Header from "../header"
-import SearchBar from "../search"
+import Header from "../Header"
+import SearchBar from "../Search"
 import './index.css'
 
 const Popular = () => {

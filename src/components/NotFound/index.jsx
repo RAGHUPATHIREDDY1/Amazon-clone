@@ -1,4 +1,4 @@
-import Header  from "../header";
+import Header  from "../Header";
 const NotFound = () => {
   return (
     <div className="not-found">

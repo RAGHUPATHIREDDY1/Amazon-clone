@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {useNavigate, Navigate} from 'react-router'
 import Cookies from 'js-cookie'
-import Header from "../header";
+import Header from "../Header";
 import "./index.css";
   const Login = () => {
   const [username, setUsername] = useState('')
