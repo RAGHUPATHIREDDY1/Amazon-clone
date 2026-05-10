@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 import Header from '../Header'
 import './index.css'
 
-const MovieItemDetails = () => {
+const MovieItemdetails = () => {
   const { id } = useParams()
   const [movie, setMovie] = useState(null)
   const jwtToken = Cookies.get('jwt_token')
@@ -71,4 +71,4 @@ const MovieItemDetails = () => {
   );
 };
 
-export default MovieItemDetails;
+export default MovieItemdetails;
