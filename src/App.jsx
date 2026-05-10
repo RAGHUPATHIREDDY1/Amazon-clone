@@ -8,10 +8,10 @@ import MovieItemdetails from './components/MovieItemdetails'
 import './App.css'
 const App = () => {
   return (
-    <BrowserRouter className="app">
+    <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
-         <Route path='/popular' element={<Popular />} />
+        <Route path='/popular' element={<Popular />} />
         <Route path='/login' element={<Login />} />
         <Route path='/search' element={<Search />} />
         <Route path='/movie/:id' element={<MovieItemdetails />} />
