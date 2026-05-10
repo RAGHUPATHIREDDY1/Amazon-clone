@@ -4,7 +4,7 @@ import NotFound from './components/NotFound'
 import Login from './components/Login'
 import Popular from './components/Popular'
 import Search from './components/Search'
-import MovieItemDetails from './components/MovieItemDetails'
+import MovieItemDetails from './components/MovieItemdetails'
 import './App.css'
 const App = () => {
   return (
