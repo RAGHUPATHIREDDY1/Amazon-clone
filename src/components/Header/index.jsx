@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import Avatar from '../../assets/avatar.png';
+import Avatar from '../../assets/Avatar.png';
 import './index.css';
 const Header = () => {
   return (
