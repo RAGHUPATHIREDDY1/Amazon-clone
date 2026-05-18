@@ -35,7 +35,7 @@ const Home = () => {
         const formattedData = fetchedData.results.map((movie) => ({
           id: movie.id,
           title: movie.title,
-          poster_path: movie.poster_path || movie.posterPath || '',
+          poster_path: movie.poster_path || movie.posterPath || movie.backdrop_path || movie.backdropPath || '',
         }))
 
         setMoviesList(formattedData)
@@ -51,7 +51,7 @@ const Home = () => {
         const formattedTrending = trendingData.results.map((movie) => ({
           id: movie.id,
           title: movie.title,
-          poster_path: movie.poster_path || '',
+          poster_path: movie.poster_path || movie.posterPath || movie.backdrop_path || movie.backdropPath || '',
         }))
 
         setTrendingMovies(formattedTrending)
@@ -67,7 +67,7 @@ const Home = () => {
         const formattedTopRated = topRatedData.results.map((movie) => ({
           id: movie.id,
           title: movie.title,
-          poster_path: movie.poster_path || '',
+          poster_path: movie.poster_path || movie.posterPath || movie.backdrop_path || movie.backdropPath || '',
         }))
 
         setTopRatedMovies(formattedTopRated)
@@ -82,8 +82,8 @@ const Home = () => {
     setHasSearched(results.length > 0 || results.length === 0)
   }
 
-  const handleMovieClick = (movieId) => {
-    navigate(`/movie/${movieId}`)
+  const handleMovieClick = (movie) => {
+    navigate(`/movie/${movie.id}`, { state: { movie } })
   }
 
   if (jwtToken === undefined) {
@@ -109,7 +109,7 @@ const Home = () => {
               <div
                 key={movie.id}
                 className="movie-card"
-                onClick={() => handleMovieClick(movie.id)}
+                onClick={() => handleMovieClick(movie)}
               >
                 <img
                   src={movie.poster_path}
@@ -133,7 +133,7 @@ const Home = () => {
               <div
                 key={movie.id}
                 className="movie-card"
-                onClick={() => handleMovieClick(movie.id)}
+                onClick={() => handleMovieClick(movie)}
               >
                 <img
                   src={movie.poster_path}
@@ -160,7 +160,7 @@ const Home = () => {
             <div
               key={movie.id}
               className="movie-card"
-              onClick={() => handleMovieClick(movie.id)}
+              onClick={() => handleMovieClick(movie)}
             >
               <img
                 src={movie.poster_path}
