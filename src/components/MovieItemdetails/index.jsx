@@ -22,7 +22,7 @@ const MovieItemdetails = () => {
       const data = await response.json()
       const movieData = {
         ...data.movie_details,
-        poster_path: data.movie_details.poster_path ? `https://image.tmdb.org/t/p/w500${data.movie_details.poster_path}` : 'https://via.placeholder.com/300x450?text=No+Image',
+        poster_path: data.movie_details.poster_path || 'https://via.placeholder.com/300x450?text=No+Image',
       }
       setMovie(movieData)
       console.log('Movie details:', movieData)
