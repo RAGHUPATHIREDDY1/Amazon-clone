@@ -19,6 +19,8 @@ const Header = () => {
             <ul className="header-links">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/popular">Popular</Link></li>
+                <li><Link to="/top-rated">Top Rated</Link></li>
+                <li><Link to="/originals">Originals</Link></li>
            </ul>
            <ul className="header-search-avatar">
            {jwtToken === undefined ? (

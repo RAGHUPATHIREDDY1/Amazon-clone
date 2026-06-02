@@ -15,10 +15,9 @@ const SearchBar = ({ moviesList = [], onSearch }) => {
       return
     }
     
-    // Convert search input to lowercase
+
     const searchLower = searchText.toLowerCase()
     
-    // Filter movies by comparing lowercase names
     const filteredMovies = moviesList.filter((movie) =>
       movie.title.toLowerCase().includes(searchLower)
     )

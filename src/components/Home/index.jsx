@@ -99,7 +99,7 @@ const Home = () => {
 
       <SearchBar moviesList={moviesList} onSearch={handleSearch} />
 
-      {/* Trending Movies Section */}
+  
       {!hasSearched && (
         <div className="movies-container">
           <h1 className="movies-title">Trending Movies</h1>
@@ -123,7 +123,7 @@ const Home = () => {
         </div>
       )}
 
-      {/* Top Rated Movies Section */}
+
       {!hasSearched && (
         <div className="movies-container">
           <h1 className="movies-title">Top Rated Movies</h1>
@@ -147,7 +147,7 @@ const Home = () => {
         </div>
       )}
 
-      {/* Originals Section */}
+
       <div className="movies-container">
         <h1 className="movies-title">{title}</h1>
 
