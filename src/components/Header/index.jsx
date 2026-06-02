@@ -1,6 +1,6 @@
 import {Link, useNavigate} from 'react-router-dom';
 import Cookies from 'js-cookie';
-import Avatar from '../../assets/avatar.png';
+import Avatar from '../../assets/Avatar.png';
 import './index.css';
 
 const Header = () => {
