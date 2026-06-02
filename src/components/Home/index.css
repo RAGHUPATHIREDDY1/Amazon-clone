@@ -93,3 +93,137 @@
     font-size: 22px;
   }
 }
+.home {
+  min-height: 100vh;
+  background-color: #0f0f0f;
+  color: white;
+}
+
+/* HERO SECTION */
+
+.hero-section {
+  height: 60vh;
+  background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  padding-left: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-title {
+  font-size: 52px;
+  max-width: 600px;
+  margin-bottom: 15px;
+}
+
+.hero-description {
+  max-width: 550px;
+  line-height: 1.6;
+  color: #dddddd;
+  margin-bottom: 20px;
+}
+
+.hero-button {
+  width: 150px;
+  height: 45px;
+  border: none;
+  border-radius: 8px;
+  background-color: #e50914;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-button:hover {
+  background-color: #ff1f2d;
+}
+
+/* MOVIE SECTION */
+
+.movies-container {
+  padding: 30px 50px;
+}
+
+.movies-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+/* MOVIE GRID */
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+/* CARD */
+
+.movie-card {
+  background-color: #181818;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.movie-info {
+  padding: 12px;
+}
+
+.movie-name {
+  font-size: 16px;
+  text-align: center;
+}
+
+/* NO MOVIES */
+
+.no-movies {
+  text-align: center;
+  font-size: 22px;
+  color: gray;
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 768px) {
+  .hero-title {
+    font-size: 34px;
+  }
+
+  .hero-overlay {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .movies-container {
+    padding: 20px;
+  }
+
+  .movie-poster {
+    height: 250px;
+  }
+}

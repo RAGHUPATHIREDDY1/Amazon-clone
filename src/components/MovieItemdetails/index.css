@@ -1,78 +1,126 @@
-.movie-details {
-  background-color: #0f0f0f;
+.movie-details-page {
   min-height: 100vh;
-  color: #ffffff;
-  padding: 20px;
+  background-color: #0f0f0f;
+  color: white;
+  padding-top: 90px;
+}
+
+.movie-banner {
+  min-height: calc(100vh - 90px);
+
+  background-image: linear-gradient(
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.9)
+  );
+
+  padding: 40px;
+}
+
+.movie-overlay {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.back-button {
+  background-color: #e50914;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  padding: 10px 18px;
+
+  cursor: pointer;
+
+  margin-bottom: 30px;
+}
+
+.back-button:hover {
+  background-color: #ff1f2d;
 }
 
 .movie-detail-container {
   display: flex;
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  gap: 40px;
+  align-items: flex-start;
 }
 
 .detail-poster {
-  width: 250px;
-  height: 400px;
+  width: 320px;
+  height: 480px;
+
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+  border-radius: 12px;
+
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
 }
 
 .movie-detail-info {
   flex: 1;
 }
 
-.movie-detail-info h1 {
-  font-size: 40px;
+.movie-title {
+  font-size: 52px;
+  margin-bottom: 15px;
+}
+
+.rating-badge {
+  display: inline-block;
+
+  background-color: #e50914;
+
+  padding: 8px 15px;
+
+  border-radius: 20px;
+
   margin-bottom: 20px;
-  font-weight: 700;
 }
 
-.movie-detail-info p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 12px;
-  color: #cccccc;
-}
-
-.movie-detail-info h3 {
-  font-size: 20px;
-  margin-top: 25px;
-  margin-bottom: 12px;
-  font-weight: 600;
+.overview {
+  line-height: 1.8;
+  color: #d1d1d1;
 }
 
 .genres-list {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
 }
 
 .genre {
-  display: inline-block;
+  background-color: #222;
   padding: 8px 15px;
-  background-color: #1a1a1a;
-  border: 1px solid #404040;
   border-radius: 20px;
-  font-size: 14px;
 }
 
-@media (max-width: 768px) {
+.loading-container {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
   .movie-detail-container {
     flex-direction: column;
-    gap: 20px;
   }
-  
+
   .detail-poster {
     width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
+    max-width: 320px;
+    height: auto;
   }
-  
-  .movie-detail-info h1 {
-    font-size: 28px;
+
+  .movie-title {
+    font-size: 32px;
+  }
+
+  .movie-banner {
+    padding: 20px;
   }
 }

@@ -1,38 +1,28 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import './index.css'
 
-const SearchBar = ({ moviesList = [], onSearch }) => {
+const SearchBar = ({moviesList = [], onSearch}) => {
   const [searchInput, setSearchInput] = useState('')
-  
-  const handleSearch = (e) => {
-    const searchText = e.target.value
-    setSearchInput(searchText)
-    
-    if (searchText.trim() === '') {
-      if (onSearch) {
-        onSearch([])
-      }
-      return
-    }
-    
 
-    const searchLower = searchText.toLowerCase()
-    
-    const filteredMovies = moviesList.filter((movie) =>
-      movie.title.toLowerCase().includes(searchLower)
+  const handleSearch = event => {
+    const searchText = event.target.value
+
+    setSearchInput(searchText)
+
+    const filteredMovies = moviesList.filter(movie =>
+      movie.title.toLowerCase().includes(searchText.toLowerCase())
     )
-    
-    console.log('Search Results:', filteredMovies)
+
     if (onSearch) {
-      onSearch(filteredMovies)
+      onSearch(filteredMovies, searchText)
     }
   }
-  
+
   return (
     <div className="search-bar-wrapper">
       <div className="search-bar">
-        <input 
-          type="text" 
+        <input
+          type="text"
           placeholder="Search movies..."
           value={searchInput}
           onChange={handleSearch}
@@ -40,6 +30,7 @@ const SearchBar = ({ moviesList = [], onSearch }) => {
         />
       </div>
     </div>
-  );
+  )
 }
-export default SearchBar;
+
+export default SearchBar

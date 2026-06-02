@@ -1,34 +1,43 @@
-import { useState, useEffect } from 'react'
+import {useState, useEffect} from 'react'
 import Cookies from 'js-cookie'
-import { Navigate, useNavigate } from 'react-router-dom'
-import Header from "../Header"
-import SearchBar from "../Search"
+import {Navigate, useNavigate} from 'react-router-dom'
+import Header from '../Header'
 import './index.css'
 
 const Popular = () => {
   const [popularMoviesList, setPopularMoviesList] = useState([])
   const [searchResults, setSearchResults] = useState([])
   const [hasSearched, setHasSearched] = useState(false)
+
   const navigate = useNavigate()
   const jwtToken = Cookies.get('jwt_token')
 
   useEffect(() => {
     const getMovies = async () => {
-      const apiUrl = "https://apis.ccbp.in/movies-app/popular-movies"
+      const apiUrl = 'https://apis.ccbp.in/movies-app/popular-movies'
+
       const options = {
         headers: {
           Authorization: `Bearer ${jwtToken}`,
         },
-        method: "GET",
+        method: 'GET',
       }
+
       const response = await fetch(apiUrl, options)
-      if (response.ok === true) {
+
+      if (response.ok) {
         const fetchedData = await response.json()
-        const formattedData = fetchedData.results.map((movie) => ({
+
+        const formattedData = fetchedData.results.map(movie => ({
           id: movie.id,
           title: movie.title,
-          poster_path: movie.poster_path || movie.posterPath || '',
+          poster_path:
+            movie.poster_path ||
+            movie.posterPath ||
+            movie.backdrop_path ||
+            movie.backdropPath,
         }))
+
         setPopularMoviesList(formattedData)
       }
     }
@@ -36,12 +45,12 @@ const Popular = () => {
     getMovies()
   }, [jwtToken])
 
-  const handleSearch = (results) => {
+  const handleSearch = results => {
     setSearchResults(results)
-    setHasSearched(results.length > 0 || results.length === 0)
+    setHasSearched(true)
   }
 
-  const handleMovieClick = (movieId) => {
+  const handleMovieClick = movieId => {
     navigate(`/movie/${movieId}`)
   }
 
@@ -49,39 +58,61 @@ const Popular = () => {
     return <Navigate to="/login" />
   }
 
-  const moviesToDisplay = hasSearched ? searchResults : popularMoviesList
-  const title = hasSearched ? "Search Results" : "Popular Movies"
+  const moviesToDisplay = hasSearched
+    ? searchResults
+    : popularMoviesList
 
   return (
-    <div className="popular">
-      <Header />
-      <SearchBar moviesList={popularMoviesList} onSearch={handleSearch} />
+    <div className="popular-page">
+      <Header
+        moviesList={popularMoviesList}
+        onSearch={handleSearch}
+      />
+
+      <div className="popular-banner">
+        <div className="banner-content">
+          <h1>Popular Movies</h1>
+
+          <p>
+            Explore the most popular and trending movies
+            loved by audiences worldwide.
+          </p>
+        </div>
+      </div>
 
       <div className="movies-container">
-        <h1 className="movies-title">{title}</h1>
-        {moviesToDisplay.length === 0 && hasSearched && (
-          <p className="no-movies">No movies found</p>
-        )}
+        <h1 className="movies-title">
+          {hasSearched ? 'Search Results' : 'Popular Collection'}
+        </h1>
 
-        <div className="movies-grid">
-          {moviesToDisplay.map((movie) => (
-            <div
-              key={movie.id}
-              className="movie-card"
-              onClick={() => handleMovieClick(movie.id)}
-            >
-              <img
-                src={movie.poster_path}
-                alt={movie.title}
-                className="movie-poster"
-              />
-              <h3 className="movie-name">{movie.title}</h3>
-            </div>
-          ))}
-        </div>
+        {moviesToDisplay.length === 0 && hasSearched ? (
+          <p className="no-movies">No Movies Found</p>
+        ) : (
+          <div className="movies-grid">
+            {moviesToDisplay.map(movie => (
+              <div
+                key={movie.id}
+                className="movie-card"
+                onClick={() => handleMovieClick(movie.id)}
+              >
+                <img
+                  src={movie.poster_path}
+                  alt={movie.title}
+                  className="movie-poster"
+                />
+
+                <div className="movie-info">
+                  <h3 className="movie-name">
+                    {movie.title}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
-export default Popular;
+export default Popular

@@ -98,7 +98,22 @@ const Home = () => {
       <Header />
 
       <SearchBar moviesList={moviesList} onSearch={handleSearch} />
+      <div className="hero-section">
+  <div className="hero-overlay">
+    <h1 className="hero-title">
+      Unlimited Movies, TV Shows & More
+    </h1>
 
+    <p className="hero-description">
+      Watch trending movies, top rated movies and Netflix originals.
+      Enjoy unlimited entertainment anytime.
+    </p>
+
+    <button type="button" className="hero-button">
+      Play Now
+    </button>
+  </div>
+</div>
   
       {!hasSearched && (
         <div className="movies-container">

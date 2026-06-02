@@ -2,7 +2,6 @@ import {useState, useEffect} from 'react'
 import Cookies from 'js-cookie'
 import {Navigate, useNavigate} from 'react-router-dom'
 import Header from '../Header'
-import SearchBar from '../Search'
 import './index.css'
 
 const TopRated = () => {
@@ -32,7 +31,11 @@ const TopRated = () => {
         const formattedData = data.results.map(movie => ({
           id: movie.id,
           title: movie.title,
-          poster_path: movie.poster_path,
+          poster_path:
+            movie.poster_path ||
+            movie.posterPath ||
+            movie.backdrop_path ||
+            movie.backdropPath,
         }))
 
         setMoviesList(formattedData)
@@ -58,29 +61,53 @@ const TopRated = () => {
   const moviesToDisplay = hasSearched ? searchResults : moviesList
 
   return (
-    <div className="movies-page">
-      <Header />
-      <SearchBar moviesList={moviesList} onSearch={handleSearch} />
+    <div className="toprated-page">
+      <Header
+        moviesList={moviesList}
+        onSearch={handleSearch}
+      />
+
+      <div className="toprated-banner">
+        <div className="banner-content">
+          <h1>Top Rated Movies</h1>
+
+          <p>
+            Discover the highest rated movies chosen by
+            critics and movie lovers around the world.
+          </p>
+        </div>
+      </div>
 
       <div className="movies-container">
-        <h1 className="movies-title">Top Rated Movies</h1>
+        <h1 className="movies-title">
+          {hasSearched ? 'Search Results' : 'Top Rated Collection'}
+        </h1>
 
-        <div className="movies-grid">
-          {moviesToDisplay.map(movie => (
-            <div
-              key={movie.id}
-              className="movie-card"
-              onClick={() => handleMovieClick(movie.id)}
-            >
-              <img
-                src={movie.poster_path}
-                alt={movie.title}
-                className="movie-poster"
-              />
-              <h3 className="movie-name">{movie.title}</h3>
-            </div>
-          ))}
-        </div>
+        {moviesToDisplay.length === 0 && hasSearched ? (
+          <p className="no-movies">No Movies Found</p>
+        ) : (
+          <div className="movies-grid">
+            {moviesToDisplay.map(movie => (
+              <div
+                key={movie.id}
+                className="movie-card"
+                onClick={() => handleMovieClick(movie.id)}
+              >
+                <img
+                  src={movie.poster_path}
+                  alt={movie.title}
+                  className="movie-poster"
+                />
+
+                <div className="movie-info">
+                  <h3 className="movie-name">
+                    {movie.title}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
